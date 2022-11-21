@@ -18,42 +18,49 @@ class TestAddContact(unittest.TestCase):
         self.login(wd)
         # init contact creation
         wd.find_element_by_link_text("add new").click()
-        # fill contact form
+        ### fill contact form
+        # enter First name
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        # enter First name
         wd.find_element_by_name("firstname").send_keys("Fname")
+        # enter Middle name
         wd.find_element_by_name("middlename").click()
         wd.find_element_by_name("middlename").clear()
-        # enter Middle name
         wd.find_element_by_name("middlename").send_keys("Mname")
+        # enter Last name
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        # enter Last name
         wd.find_element_by_name("lastname").send_keys("Lname")
+        # enter Nickname
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
-        # enter Nickname
         wd.find_element_by_name("nickname").send_keys("Nname")
+        # enter title
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
         wd.find_element_by_name("title").send_keys("qwerty1")
+        # enter company
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
         wd.find_element_by_name("company").send_keys("asdfgh2")
+        # enter address company
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys("zxcvbnm3")
-        # enter Telephone
+        ### enter Telephone
+        # enter home phone
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys("111222")
+        # enter mobile
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys("111333")
+        # enter work phone
         wd.find_element_by_name("work").click()
         wd.find_element_by_name("work").clear()
         wd.find_element_by_name("work").send_keys("111444")
+        # enter fax
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys("111555")
