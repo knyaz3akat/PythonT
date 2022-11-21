@@ -19,7 +19,7 @@ class test_add_group(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_group_page(wd)
         self.creat_group(wd, Group(name="qwe2", header="qqq2", footer="www2"))
-        self.retutn_to_group_page(wd)
+        self.return_to_group_page(wd)
         self.logout(wd)
 
     def test_add_empty_group(self):
@@ -28,7 +28,7 @@ class test_add_group(unittest.TestCase):
         self.login(wd, username="admin", password="secret")
         self.open_group_page(wd)
         self.creat_group(wd, Group(name="", header="", footer=""))
-        self.retutn_to_group_page(wd)
+        self.return_to_group_page(wd)
         self.logout(wd)
 
     def logout(self, wd):
@@ -37,8 +37,8 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
 
-    def retutn_to_group_page(self, wd):
-        # retutn to group page
+    def return_to_group_page(self, wd):
+        # return to group page
         wd.find_element_by_link_text("group page").click()
 
     def creat_group(self, wd, group):
