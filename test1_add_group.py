@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
+from group1 import Group1
 
 class test1_add_group(unittest.TestCase):
     def setUp(self):
@@ -17,7 +18,7 @@ class test1_add_group(unittest.TestCase):
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.open_group_page(wd)
-        self.creat_group(wd)
+        self.creat_group(wd, Group1(gname="gr1", gheader="qwerty gr1", gfooter="asdfgh qr1"))
         self.return_to_group_page(wd)
         self.logout(wd)
 
@@ -31,19 +32,19 @@ class test1_add_group(unittest.TestCase):
         # Return to group page
         wd.find_element_by_link_text("group page").click()
 
-    def creat_group(self, wd):
+    def creat_group(self, wd, group1):
         # Creat new group
         wd.find_element_by_name("new").click()
         # Fill group
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("gr1")
+        wd.find_element_by_name("group_name").send_keys(group1.gname)
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("qwerty gr1")
+        wd.find_element_by_name("group_header").send_keys(group1.gheader)
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("asdfgh qr1")
+        wd.find_element_by_name("group_footer").send_keys(group1.gfooter)
         # Submit group creation
         wd.find_element_by_name("submit").click()
 
@@ -77,5 +78,4 @@ class test1_add_group(unittest.TestCase):
     def tearDown(self):
         self.wd.quit()
 
-if __name__ == "__main__":
-    unittest.main()
+
