@@ -3,7 +3,7 @@ class Contact:
                       title, company, address, home, mobile,
                       work, fax, email, email2, email3,
                       homepage, bday, bmonth, byear, aday, amonth,
-                      ayear, address2, phone2, notes):
+                      ayear, new_group, address2, phone2, notes):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -25,6 +25,7 @@ class Contact:
         self.aday = aday
         self.amonth = amonth
         self.ayear = ayear
+        self.new_group = new_group
         self.address2 = address2
         self.phone2 = phone2
         self.notes = notes

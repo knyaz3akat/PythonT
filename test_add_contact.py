@@ -21,7 +21,7 @@ class TestAddContact(unittest.TestCase):
                       title="qwerty1", company="asdfgh2", address="zxcvbnm3", home="111222", mobile="111333",
                       work="111444", fax="111555", email="asd1@asd.asd", email2="asd2@asd.ad", email3="asd3@asd.asd",
                       homepage="www.ya.ru", bday="1", bmonth="February", byear="1987", aday="2", amonth="April",
-                      ayear="2020", address2="zxzxzx", phone2="cvcvcv", notes="bnbnbn"))
+                      ayear="2020", new_group="[none]", address2="zxzxzx", phone2="cvcvcv", notes="bnbnbn"))
         self.return_to_home_page(wd)
         self.logout(wd)
 
@@ -109,6 +109,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
         # select group
         wd.find_element_by_name("new_group").click()
+        Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
         wd.find_element_by_xpath("//option[@value='[none]']").click()
         # enter secondary address
         wd.find_element_by_name("address2").click()
