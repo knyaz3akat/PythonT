@@ -14,14 +14,19 @@ class test1_add_group(unittest.TestCase):
 
     def test1_add_group(self):
         wd = self.wd
+        # Open home page
         wd.get("http://localhost/addressbook/")
+        # Authorization
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").send_keys("admin")
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//input[@value='Login']").click()
+        # Open group page
         wd.find_element_by_link_text("groups").click()
+        # Creat new group
         wd.find_element_by_name("new").click()
+        # fill group
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
         wd.find_element_by_name("group_name").send_keys("gr1")
