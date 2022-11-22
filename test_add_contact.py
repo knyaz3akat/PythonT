@@ -15,26 +15,22 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd,username="admin", password="secret")
         self.creat_contact(wd, Contact(firstname="Fname", middlename="Mname", lastname="Lname", nickname="Nname",
                       title="qwerty1", company="asdfgh2", address="zxcvbnm3", home="111222", mobile="111333",
                       work="111444", fax="111555", email="asd1@asd.asd", email2="asd2@asd.ad", email3="asd3@asd.asd",
                       homepage="www.ya.ru", bday="1", bmonth="February", byear="1987", aday="2", amonth="April",
                       ayear="2020", new_group="[none]", address2="zxzxzx", phone2="cvcvcv", notes="bnbnbn"))
-        self.return_to_home_page(wd)
         self.logout(wd)
 
     def test_add_empty_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd,username="admin", password="secret")
         self.creat_contact(wd, Contact(firstname="", middlename="", lastname="", nickname="",
                       title="", company="", address="", home="", mobile="",
                       work="", fax="", email="", email2="", email3="",
                       homepage="", bday="", bmonth="-", byear="", aday="-", amonth="-",
                       ayear="", new_group="[none]", address2="", phone2="", notes=""))
-        self.return_to_home_page(wd)
         self.logout(wd)
 
     def creat_contact(self, wd, contact):
@@ -135,6 +131,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("notes").send_keys(contact.notes)
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.return_to_home_page(wd)
 
     def return_to_home_page(self, wd):
         # return to home page
@@ -147,6 +144,7 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("user").send_keys("admin")
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         # login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
