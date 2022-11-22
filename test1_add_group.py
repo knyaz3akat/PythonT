@@ -22,6 +22,15 @@ class test1_add_group(unittest.TestCase):
         self.return_to_group_page(wd)
         self.logout(wd)
 
+    def test1_add_empty_group(self):
+        wd = self.wd
+        self.open_home_page(wd)
+        self.login(wd, username="admin", password="secret")
+        self.open_group_page(wd)
+        self.creat_group(wd, Group1(gname="", gheader="", gfooter=""))
+        self.return_to_group_page(wd)
+        self.logout(wd)
+
     def logout(self, wd):
         # Exit
         wd.find_element_by_link_text("Logout").click()
