@@ -5,41 +5,14 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from fixture.session import SessionHelper
+from fixture.group import GroupHelper
 
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
         self.session = SessionHelper(self)
-
-    def return_to_group_page(self):
-        wd = self.wd
-        # Return to group page
-        wd.find_element_by_link_text("group page").click()
-
-    def creat_group(self, group):
-        wd = self.wd
-        self.open_group_page()
-        # Creat new group
-        wd.find_element_by_name("new").click()
-        # Fill group
-        wd.find_element_by_name("group_name").click()
-        wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys(group.gname)
-        wd.find_element_by_name("group_header").click()
-        wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys(group.gheader)
-        wd.find_element_by_name("group_footer").click()
-        wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys(group.gfooter)
-        # Submit group creation
-        wd.find_element_by_name("submit").click()
-        self.return_to_group_page()
-
-    def open_group_page(self):
-        wd = self.wd
-        # Open group page
-        wd.find_element_by_link_text("groups").click()
+        self.group = GroupHelper(self)
 
     def open_home_page(self):
         wd = self.wd
