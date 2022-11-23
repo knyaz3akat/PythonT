@@ -15,14 +15,12 @@ class Test_Add_Group(unittest.TestCase):
 
     def test_add_group(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.creat_group(wd, Group(gname="gr1", gheader="qwerty gr1", gfooter="asdfgh qr1"))
         self.logout(wd)
 
     def test_add_empty_group(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.creat_group(wd, Group(gname="", gheader="", gfooter=""))
         self.logout(wd)

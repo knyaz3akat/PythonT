@@ -15,7 +15,6 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd,username="admin", password="secret")
         self.creat_contact(wd, Contact(firstname="Fname1", middlename="Mname1", lastname="Lname1", nickname="Nname1",
                                        title="qwerty1", company="asdfgh2", address="zxcvbnm3", home="111222", mobile="111333",
@@ -26,7 +25,6 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_empty_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd,username="admin", password="secret")
         self.creat_contact(wd, Contact(firstname="", middlename="", lastname="", nickname="",
                                        title="", company="", address="", home="", mobile="",
