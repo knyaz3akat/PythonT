@@ -14,29 +14,30 @@ class Test_Add_Group(unittest.TestCase):
         self.wd.implicitly_wait(30)
 
     def test_add_group(self):
-        wd = self.wd
-        self.login(wd, username="admin", password="secret")
-        self.creat_group(wd, Group(gname="gr1", gheader="qwerty gr1", gfooter="asdfgh qr1"))
-        self.logout(wd)
+        self.login(username="admin", password="secret")
+        self.creat_group(Group(gname="gr1", gheader="qwerty gr1", gfooter="asdfgh qr1"))
+        self.logout()
 
     def test_add_empty_group(self):
-        wd = self.wd
-        self.login(wd, username="admin", password="secret")
-        self.creat_group(wd, Group(gname="", gheader="", gfooter=""))
-        self.logout(wd)
+        self.login(username="admin", password="secret")
+        self.creat_group(Group(gname="", gheader="", gfooter=""))
+        self.logout()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         # Exit
         wd.find_element_by_link_text("Logout").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
 
-    def return_to_group_page(self, wd):
+    def return_to_group_page(self):
+        wd = self.wd
         # Return to group page
         wd.find_element_by_link_text("group page").click()
 
-    def creat_group(self, wd, group):
-        self.open_group_page(wd)
+    def creat_group(self, group):
+        wd = self.wd
+        self.open_group_page()
         # Creat new group
         wd.find_element_by_name("new").click()
         # Fill group
@@ -51,18 +52,21 @@ class Test_Add_Group(unittest.TestCase):
         wd.find_element_by_name("group_footer").send_keys(group.gfooter)
         # Submit group creation
         wd.find_element_by_name("submit").click()
-        self.return_to_group_page(wd)
+        self.return_to_group_page()
 
-    def open_group_page(self, wd):
+    def open_group_page(self):
+        wd = self.wd
         # Open group page
         wd.find_element_by_link_text("groups").click()
 
-    def open_home_page(self, wd):
+    def open_home_page(self):
+        wd = self.wd
         # Open home page
         wd.get("http://localhost/addressbook/")
 
-    def login(self, wd, username, password):
-        self.open_home_page(wd)
+    def login(self, username, password):
+        wd = self.wd
+        self.open_home_page()
         # Login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").send_keys(username)
