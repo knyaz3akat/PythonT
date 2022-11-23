@@ -1,32 +1,9 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
-from fixture.session import SessionHelper
-from fixture.group import GroupHelper
-#from fixture.contact import ContactHelper
+class ContactHelper
+    def __init__(self, app):
+        self.app = app
 
-class Application:
-    def __init__(self):
-        self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
-        self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
-        #self.contact = ContactHelper(self)
-
-    def open_home_page(self):
-        wd = self.wd
-        # Open home page
-        wd.get("http://localhost/addressbook/")
-
-    def destroy(self):
-        self.wd.quit()
-
-# razdelenie
     def creat_contact(self, contact):
-        wd = self.wd
+        wd = self.app.wd
         # init contact creation
         wd.find_element_by_link_text("add new").click()
         ### fill contact form
@@ -127,6 +104,6 @@ class Application:
         self.return_to_home_page()
 
     def return_to_home_page(self):
-        wd = self.wd
+        wd = self.app.wd
         # return to home page
         wd.find_element_by_link_text("home page").click()
