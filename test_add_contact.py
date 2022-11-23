@@ -16,7 +16,7 @@ class TestAddContact(unittest.TestCase):
     def test_add_contact(self):
         wd = self.wd
         self.login(wd,username="admin", password="secret")
-        self.creat_contact(wd, Contact(firstname="Fname", middlename="Mname", lastname="Lname", nickname="Nname",
+        self.creat_contact(wd, Contact(firstname="Fname1", middlename="Mname1", lastname="Lname1", nickname="Nname1",
                                        title="qwerty1", company="asdfgh2", address="zxcvbnm3", home="111222", mobile="111333",
                                        workphone="111444", fax="111555", email="asd1@asd.asd", email2="asd2@asd.ad", email3="asd3@asd.asd",
                                        homepage="www.ya.ru", bday="1", bmonth="February", byear="1987", aday="2", amonth="April",
@@ -98,27 +98,27 @@ class TestAddContact(unittest.TestCase):
         # select b-date
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
-        wd.find_element_by_xpath("//option[@value='"+contact.bday+"']").click()
+        # alternative- wd.find_element_by_xpath("//option[@value='"+contact.bday+"']").click()
         wd.find_element_by_name("bmonth").click()
         Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
-        wd.find_element_by_xpath("//option[@value='"+contact.bmonth+"']").click()
+        # alternative- wd.find_element_by_xpath("//option[@value='"+contact.bmonth+"']").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contact.byear)
         # select a-date
         wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
+        # alternative- Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
         wd.find_element_by_xpath("//select[@name='aday']/option[text()='"+contact.aday+"']").click()
         wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        # alternative- Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
         wd.find_element_by_xpath("//select[@name='amonth']/option[text()='"+contact.amonth+"']").click()
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
         # select group
         wd.find_element_by_name("new_group").click()
-        Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
-        wd.find_element_by_xpath("//option[@value='[none]']").click()
+        # alternative- Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
+        wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
         # enter secondary address
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
