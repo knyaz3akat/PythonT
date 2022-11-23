@@ -35,8 +35,8 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         # Select 1th group
-        wd.find_element_by_name("selected[]").click()
-        #wd.find_element_by_xpath("//span[@class='group']/input[@name='selected[]').click()
+        # alternative: wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("//span[@class='group']/input[@name='selected[]']").click()
         # Submit delete
         wd.find_element_by_name("delete").click()
         self.return_to_group_page()
