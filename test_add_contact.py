@@ -17,20 +17,20 @@ class TestAddContact(unittest.TestCase):
         wd = self.wd
         self.login(wd,username="admin", password="secret")
         self.creat_contact(wd, Contact(firstname="Fname", middlename="Mname", lastname="Lname", nickname="Nname",
-                      title="qwerty1", company="asdfgh2", address="zxcvbnm3", home="111222", mobile="111333",
-                      work="111444", fax="111555", email="asd1@asd.asd", email2="asd2@asd.ad", email3="asd3@asd.asd",
-                      homepage="www.ya.ru", bday="1", bmonth="February", byear="1987", aday="2", amonth="April",
-                      ayear="2020", new_group="[none]", address2="zxzxzx", phone2="cvcvcv", notes="bnbnbn"))
+                                       title="qwerty1", company="asdfgh2", address="zxcvbnm3", home="111222", mobile="111333",
+                                       workphone="111444", fax="111555", email="asd1@asd.asd", email2="asd2@asd.ad", email3="asd3@asd.asd",
+                                       homepage="www.ya.ru", bday="1", bmonth="February", byear="1987", aday="2", amonth="April",
+                                       ayear="2020", new_group="[none]", address2="zxzxzx", phone2="cvcvcv", notes="bnbnbn"))
         self.logout(wd)
 
     def test_add_empty_contact(self):
         wd = self.wd
         self.login(wd,username="admin", password="secret")
         self.creat_contact(wd, Contact(firstname="", middlename="", lastname="", nickname="",
-                      title="", company="", address="", home="", mobile="",
-                      work="", fax="", email="", email2="", email3="",
-                      homepage="", bday="", bmonth="-", byear="", aday="-", amonth="-",
-                      ayear="", new_group="[none]", address2="", phone2="", notes=""))
+                                       title="", company="", address="", home="", mobile="",
+                                       workphone="", fax="", email="", email2="", email3="",
+                                       homepage="", bday="", bmonth="-", byear="", aday="-", amonth="-",
+                                       ayear="", new_group="[none]", address2="", phone2="", notes=""))
         self.logout(wd)
 
     def creat_contact(self, wd, contact):
@@ -77,7 +77,7 @@ class TestAddContact(unittest.TestCase):
         # enter work phone
         wd.find_element_by_name("work").click()
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(contact.work)
+        wd.find_element_by_name("work").send_keys(contact.workphone)
         # enter fax
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
