@@ -4,19 +4,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from fixture.session import SessionHelper
 
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
-
-
-    def logout(self):
-        wd = self.wd
-        # Exit
-        wd.find_element_by_link_text("Logout").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
+        self.session = SessionHelper(self)
 
     def return_to_group_page(self):
         wd = self.wd
@@ -51,17 +45,6 @@ class Application:
         wd = self.wd
         # Open home page
         wd.get("http://localhost/addressbook/")
-
-    def login(self, username, password):
-        wd = self.wd
-        self.open_home_page()
-        # Login
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").send_keys(password)
-        # Authorization
-        wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def destroy(self):
         self.wd.quit()
