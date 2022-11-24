@@ -7,6 +7,7 @@ class ContactHelper:
         # init contact creation
         wd.find_element_by_link_text("add new").click()
         ### fill contact form
+
         # enter First name
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -39,7 +40,7 @@ class ContactHelper:
         # enter home phone
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contact.home)
+        wd.find_element_by_name("home").send_keys(contact.homephone)
         # enter mobile
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
@@ -125,6 +126,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@name='selected[]']").click()
         wd.find_element_by_xpath("//img[@title='Edit']").click()
         ### fill contact form
+        ## fill name contact
         # enter First name
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -141,6 +143,7 @@ class ContactHelper:
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        ## fill organisation
         # enter title
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
@@ -153,11 +156,11 @@ class ContactHelper:
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys(contact.address)
-        ### enter Telephone
+        ## enter Telephone
         # enter home phone
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contact.home)
+        wd.find_element_by_name("home").send_keys(contact.homephone)
         # enter mobile
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
