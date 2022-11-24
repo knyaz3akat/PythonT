@@ -86,10 +86,11 @@ class ContactHelper:
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
-        # select group
+        ## select group
         wd.find_element_by_name("new_group").click()
         # alternative- Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
         wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
+        ##
         # enter secondary address
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
@@ -143,6 +144,7 @@ class ContactHelper:
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        ##
         ## fill organisation
         # enter title
         wd.find_element_by_name("title").click()
@@ -156,6 +158,7 @@ class ContactHelper:
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys(contact.address)
+        ##
         ## enter Telephone
         # enter home phone
         wd.find_element_by_name("home").click()
@@ -173,7 +176,8 @@ class ContactHelper:
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys(contact.fax)
-        # enter e-mail
+        ##
+        ## enter e-mail
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys(contact.email)
@@ -186,6 +190,8 @@ class ContactHelper:
         wd.find_element_by_name("homepage").click()
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys(contact.homepage)
+        ##
+        ## select ba-dates
         # select b-date
         wd.find_element_by_name("bday").click()
         # alternative- crash test  Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
@@ -206,7 +212,9 @@ class ContactHelper:
         wd.find_element_by_name("ayear").click()
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
-        # enter secondary address
+        ##
+        """ field 'groups' is missing """
+        ## enter secondary address
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(contact.address2)
@@ -217,4 +225,5 @@ class ContactHelper:
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
         wd.find_element_by_name("update").click()
+        ##
         self.return_to_home_page()
