@@ -125,7 +125,6 @@ class ContactHelper:
         """ field 'groups' is missing """
         ## enter secondary address
         self.fill_name_part2(contact)
-        wd.find_element_by_name("update").click()
         ##
         self.return_to_home_page()
 
@@ -140,4 +139,4 @@ class ContactHelper:
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
-
+ 
