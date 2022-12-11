@@ -29,67 +29,26 @@ class ContactHelper:
         # enter Nickname
         self.change_field_value("nickname", contact.nickname)
         # enter title
-        wd.find_element_by_name("title").click()
-        wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(contact.title)
+        self.change_field_value("title", contact.title)
         # enter company
-        wd.find_element_by_name("company").click()
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(contact.company)
+        self.change_field_value("company", contact.company)
         # enter address company
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(contact.address)
+        self.change_field_value("address", contact.address)
         ### enter Telephone
         # enter home phone
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contact.homephone)
+        self.change_field_value("home", contact.homephone)
         # enter mobile
-        wd.find_element_by_name("mobile").click()
-        wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(contact.mobile)
+        self.change_field_value("mobile", contact.mobile)
         # enter work phone
-        wd.find_element_by_name("work").click()
-        wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(contact.workphone)
+        self.change_field_value("work", contact.workphone)
         # enter fax
-        wd.find_element_by_name("fax").click()
-        wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys(contact.fax)
+        self.change_field_value("fax", contact.fax)
         # enter e-mail
-        wd.find_element_by_name("email").click()
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(contact.email)
-        wd.find_element_by_name("email2").click()
-        wd.find_element_by_name("email2").clear()
-        wd.find_element_by_name("email2").send_keys(contact.email2)
-        wd.find_element_by_name("email3").click()
-        wd.find_element_by_name("email3").clear()
-        wd.find_element_by_name("email3").send_keys(contact.email3)
-        wd.find_element_by_name("homepage").click()
-        wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys(contact.homepage)
-        # select b-date
-        wd.find_element_by_name("bday").click()
-        # alternative- crash test  Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
-        wd.find_element_by_xpath("//option[@value='" + contact.bday + "']").click()
-        wd.find_element_by_name("bmonth").click()
-        # alternative- crash test  Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
-        wd.find_element_by_xpath("//option[@value='" + contact.bmonth + "']").click()
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(contact.byear)
-        # select a-date
-        wd.find_element_by_name("aday").click()
-        # alternative-  Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
-        wd.find_element_by_xpath("//select[@name='aday']/option[text()='" + contact.aday + "']").click()
-        wd.find_element_by_name("amonth").click()
-        # alternative-  Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
-        wd.find_element_by_xpath("//select[@name='amonth']/option[text()='" + contact.amonth + "']").click()
-        wd.find_element_by_name("ayear").click()
-        wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys(contact.ayear)
+        self.change_field_value("email", contact.email)
+        self.change_field_value("email2", contact.email2)
+        self.change_field_value("email3", contact.email3)
+        self.change_field_value("homepage", contact.homepage)
+
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -126,6 +85,7 @@ class ContactHelper:
         ### fill contact form
         self.fill_name_part1(new_contact_date)
         """ field 'groups' is missing """
+        self.fill_name_part3(new_contact_date)
         ## enter secondary address
         self.fill_name_part2(new_contact_date)
         ##
@@ -134,13 +94,25 @@ class ContactHelper:
 
     def fill_name_part2(self, contact):
         wd = self.app.wd
-        wd.find_element_by_name("address2").click()
-        wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(contact.address2)
-        wd.find_element_by_name("phone2").click()
-        wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys(contact.phone2)
-        wd.find_element_by_name("notes").click()
-        wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys(contact.notes)
- 
+        self.change_field_value("address2", contact.address2)
+        self.change_field_value("phone2", contact.phone2)
+        self.change_field_value("notes", contact.notes)
+
+    def fill_name_part3(self, contact):
+        wd = self.app.wd
+        # select b-date
+        wd.find_element_by_name("bday").click()
+        # alternative- crash test  Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
+        wd.find_element_by_xpath("//option[@value='" + contact.bday + "']").click()
+        wd.find_element_by_name("bmonth").click()
+        # alternative- crash test  Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
+        wd.find_element_by_xpath("//option[@value='" + contact.bmonth + "']").click()
+        self.change_field_value("byear", contact.byear)
+        # select a-date
+        wd.find_element_by_name("aday").click()
+        # alternative-  Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
+        wd.find_element_by_xpath("//select[@name='aday']/option[text()='" + contact.aday + "']").click()
+        wd.find_element_by_name("amonth").click()
+        # alternative-  Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        wd.find_element_by_xpath("//select[@name='amonth']/option[text()='" + contact.amonth + "']").click()
+        self.change_field_value("ayear", contact.ayear)
