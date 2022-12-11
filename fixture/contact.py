@@ -21,21 +21,13 @@ class ContactHelper:
     def fill_name_part1(self, contact):
         wd = self.app.wd
         # enter First name
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contact.firstname)
+        self.change_field_value("firstname", contact.firstname)
         # enter Middle name
-        wd.find_element_by_name("middlename").click()
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(contact.middlename)
+        self.change_field_value("middlename", contact.middlename)
         # enter Last name
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contact.lastname)
+        self.change_field_value("lastname", contact.lastname)
         # enter Nickname
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        self.change_field_value("nickname", contact.nickname)
         # enter title
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
@@ -99,6 +91,13 @@ class ContactHelper:
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys(contact.ayear)
 
+    def change_field_value(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
+
     def return_to_home_page(self):
         wd = self.app.wd
         # return to home page
@@ -108,24 +107,29 @@ class ContactHelper:
         wd = self.app.wd
         self.app.open_home_page()
         # Select 1th contact
-        wd.find_element_by_xpath("//input[@name='selected[]']").click()
+        self.select_first_contact()
         # Submit delete
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         self.app.open_home_page()
 
-    def edit_first_contact(self, contact):
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@name='selected[]']").click()
+
+    def edit_first_contact(self, new_contact_date):
         wd = self.app.wd
         self.app.open_home_page()
         # Select 1th contact
-        wd.find_element_by_xpath("//input[@name='selected[]']").click()
+        self.select_first_contact()
         wd.find_element_by_xpath("//img[@title='Edit']").click()
         ### fill contact form
-        self.fill_name_part1(contact)
+        self.fill_name_part1(new_contact_date)
         """ field 'groups' is missing """
         ## enter secondary address
-        self.fill_name_part2(contact)
+        self.fill_name_part2(new_contact_date)
         ##
+        wd.find_element_by_xpath("//input[@name='update']").click()
         self.return_to_home_page()
 
     def fill_name_part2(self, contact):
