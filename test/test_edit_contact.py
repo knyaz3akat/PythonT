@@ -11,5 +11,5 @@ def test_edit_first_contact(app):
 def test_edit_first_contact_fname(app):
     app.contact.edit_first_contact(Contact(firstname="Fname004"))
 
-def test_edit_first_contact_fname(app):
+def test_edit_first_contact_lname(app):
     app.contact.edit_first_contact(Contact(lastname="Lname004"))
