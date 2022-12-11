@@ -101,18 +101,16 @@ class ContactHelper:
     def fill_name_part3(self, contact):
         wd = self.app.wd
         # select b-date
-        wd.find_element_by_name("bday").click()
-        # alternative- crash test  Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
-        wd.find_element_by_xpath("//option[@value='" + contact.bday + "']").click()
-        wd.find_element_by_name("bmonth").click()
-        # alternative- crash test  Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
-        wd.find_element_by_xpath("//option[@value='" + contact.bmonth + "']").click()
+        self.change_list_value("bday", contact.bday)
+        self.change_list_value("bmonth", contact.bmonth)
         self.change_field_value("byear", contact.byear)
         # select a-date
-        wd.find_element_by_name("aday").click()
-        # alternative-  Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
-        wd.find_element_by_xpath("//select[@name='aday']/option[text()='" + contact.aday + "']").click()
-        wd.find_element_by_name("amonth").click()
-        # alternative-  Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
-        wd.find_element_by_xpath("//select[@name='amonth']/option[text()='" + contact.amonth + "']").click()
+        self.change_list_value("aday", contact.aday)
+        self.change_list_value("amonth", contact.amonth)
         self.change_field_value("ayear", contact.ayear)
+
+    def change_list_value(self, list_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(list_name).click()
+            wd.find_element_by_xpath("//option[@value='" + text + "']").click()
