@@ -3,7 +3,7 @@ class Contact:
                  title=None, company=None, address=None, homephone=None, mobile=None,
                  workphone=None, fax=None, email=None, email2=None, email3=None,
                  homepage=None, bday=None, bmonth=None, byear=None, aday=None, amonth=None,
-                 ayear=None, new_group='None', address2=None, phone2=None, notes=None):
+                 ayear=None, new_group='[none]', address2=None, phone2=None, notes=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname

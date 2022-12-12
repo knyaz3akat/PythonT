@@ -9,9 +9,11 @@ class ContactHelper:
         ### fill contact form
         self.fill_name_part1(contact)
         ## select group
-        wd.find_element_by_name("new_group").click()
+        #####################
+        self.change_list_value("new_group", contact.new_group)
+        #wd.find_element_by_name("new_group").click()
         # alternative- Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
-        wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
+        #wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
         # enter secondary address
         self.fill_name_part2(contact)
         # submit contact creation
@@ -114,3 +116,13 @@ class ContactHelper:
         if text is not None:
             wd.find_element_by_name(list_name).click()
             wd.find_element_by_xpath("//option[@value='" + text + "']").click()
+
+       #wd.find_element_by_name("new_group").click()
+        # alternative- Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
+        #wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
+
+
+    def count(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        return len (wd.find_elements_by_xpath("//input[@name='selected[]']"))
