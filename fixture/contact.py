@@ -14,6 +14,7 @@ class ContactHelper:
         #wd.find_element_by_name("new_group").click()
         # alternative- Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
         #wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
+        self.fill_name_part3(contact)
         # enter secondary address
         self.fill_name_part2(contact)
         # submit contact creation
