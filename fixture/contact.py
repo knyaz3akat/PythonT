@@ -77,6 +77,7 @@ class ContactHelper:
         # Submit delete
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        #wd.implicitly_wait(5)
         self.app.open_home_page()
         self.contact_cache = None
 
