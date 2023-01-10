@@ -16,7 +16,28 @@ class ContactHelper:
         #wd.find_element_by_name("new_group").click()
         # alternative- Select(wd.find_element_by_name("new_group")).select_by_visible_text(contact.new_group)
         #wd.find_element_by_xpath("//option[@value='"+contact.new_group+"']").click()
-        self.fill_name_part3(contact)
+        # new v 4 f - self.fill_name_part3(contact)
+
+        wd.find_element_by_name("bday").click()
+        # alternative- crash test  Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
+        wd.find_element_by_xpath("//option[@value='" + contact.bday + "']").click()
+        wd.find_element_by_name("bmonth").click()
+        # alternative- crash test  Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
+        wd.find_element_by_xpath("//option[@value='" + contact.bmonth + "']").click()
+        wd.find_element_by_name("byear").click()
+        wd.find_element_by_name("byear").clear()
+        wd.find_element_by_name("byear").send_keys(contact.byear)
+        # select a-date
+        wd.find_element_by_name("aday").click()
+        # alternative-  Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
+        wd.find_element_by_xpath("//select[@name='aday']/option[text()='" + contact.aday + "']").click()
+        wd.find_element_by_name("amonth").click()
+        # alternative-  Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        wd.find_element_by_xpath("//select[@name='amonth']/option[text()='" + contact.amonth + "']").click()
+        wd.find_element_by_name("ayear").click()
+        wd.find_element_by_name("ayear").clear()
+        wd.find_element_by_name("ayear").send_keys(contact.ayear)
+
         # enter secondary address
         self.fill_name_part2(contact)
         # submit contact creation
@@ -94,7 +115,26 @@ class ContactHelper:
         ### fill contact form
         self.fill_name_part1(new_contact_date)
         """ field 'groups' is missing """
-        self.fill_name_part3(new_contact_date)
+        #new vesion 4 future - self.fill_name_part3(new_contact_date)
+        wd.find_element_by_name("bday").click()
+        # alternative- crash test  Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.bday)
+        wd.find_element_by_xpath("//option[@value='" + new_contact_date.bday + "']").click()
+        wd.find_element_by_name("bmonth").click()
+        # alternative- crash test  Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.bmonth)
+        wd.find_element_by_xpath("//option[@value='" + new_contact_date.bmonth + "']").click()
+        wd.find_element_by_name("byear").click()
+        wd.find_element_by_name("byear").clear()
+        wd.find_element_by_name("byear").send_keys(new_contact_date.byear)
+        # select a-date
+        wd.find_element_by_name("aday").click()
+        # alternative-  Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.aday)
+        wd.find_element_by_xpath("//select[@name='aday']/option[text()='" + new_contact_date.aday + "']").click()
+        wd.find_element_by_name("amonth").click()
+        # alternative-  Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.amonth)
+        wd.find_element_by_xpath("//select[@name='amonth']/option[text()='" + new_contact_date.amonth + "']").click()
+        wd.find_element_by_name("ayear").click()
+        wd.find_element_by_name("ayear").clear()
+        wd.find_element_by_name("ayear").send_keys(new_contact_date.ayear)
         ## enter secondary address
         self.fill_name_part2(new_contact_date)
         ##
@@ -118,6 +158,7 @@ class ContactHelper:
         self.change_list_value("aday", contact.aday)
         self.change_list_value("amonth", contact.amonth)
         self.change_field_value("ayear", contact.ayear)
+
 
     def change_list_value(self, list_name, text):
         wd = self.app.wd
@@ -143,16 +184,17 @@ class ContactHelper:
             wd = self.app.wd
             self.app.open_home_page()
             self.contact_cache=[]
+            #wd.implicitly_wait(55)
             #for element in wd.find_elements_by_name("entry"):
             for element in wd.find_elements_by_xpath("//tr[@name='entry']"):
+                #wd.implicitly_wait(10)
+                id = element.find_element_by_name("selected[]").get_attribute("value") #print("id-",id)
                 lname = element.find_elements_by_tag_name("td")[1].text
                 fname = element.find_elements_by_tag_name("td")[2].text
                 #lname = element.find_element_by_xpath("//*[@name='entry']/td[2]").text
                 #print("lname", lname)
                 #fname = element.find_element_by_xpath("//*[@name='entry']/td[3]").text
                 #print("fname-", fname)
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                #print("id-",id)
                 # id = element.find_element_by_xpath("//input[@name='selected[]']").get_attribute("value")
                 self.contact_cache.append(Contact(firstname=fname, lastname=lname, id=id))
         return list(self.contact_cache)

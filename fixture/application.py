@@ -11,7 +11,7 @@ from fixture.contact import ContactHelper
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox()
-        #self.wd.implicitly_wait(5)
+        #self.wd.implicitly_wait(3)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
@@ -25,10 +25,11 @@ class Application:
 
     def open_home_page(self):
         wd = self.wd
-        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("add")) > 0):
+        #if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("add")) > 0):
             #wd.find_element_by_link_text("group page").click()
         # Open home page
-            wd.get("http://localhost/addressbook/")
+        wd.get("http://localhost/addressbook/")
+        #wd.implicitly_wait(10)
 
     def destroy(self):
         self.wd.quit()
