@@ -1,4 +1,5 @@
 from model.group import Group
+from random import randrange
 
 def test_edit_first_group(app):
     if app.group.count()==0:
