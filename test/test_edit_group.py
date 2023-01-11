@@ -6,7 +6,7 @@ def test_edit_group(app):
         app.group.create(Group(gname="GN_test"))
     old_groups=app.group.get_group_list()
     index = randrange(len(old_groups))
-    print("4ucJlo = " + str( index))
+    #print("4ucJlo = " + str(index))
     group=Group(gname="gr3-edit", gheader="qwerty gr3-edit", gfooter="asdfgh qr3-edit")
     group.id = old_groups[index].id
     app.group.edit_group_by_index(group, index)

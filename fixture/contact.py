@@ -105,6 +105,23 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_xpath("//input[@name='selected[]']").click()
 
+    def edit_contact_by_index(self, new_contact_date, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Select 1th contact
+        self.select_contact_by_index(index)
+        wd.find_element_by_xpath("//img[@title='Edit']").click()
+        ### fill contact form
+        self.fill_name_part1(new_contact_date)
+        """ field 'groups' is missing """
+        self.fill_name_part3(new_contact_date)
+        ## enter secondary address
+        self.fill_name_part2(new_contact_date)
+        ##
+        wd.find_element_by_xpath("//input[@name='update']").click()
+        self.return_to_home_page()
+        self.contact_cache = None
+
     def edit_first_contact(self, new_contact_date):
         wd = self.app.wd
         self.app.open_home_page()
@@ -115,7 +132,6 @@ class ContactHelper:
         self.fill_name_part1(new_contact_date)
         """ field 'groups' is missing """
         self.fill_name_part3(new_contact_date)
-
         ## enter secondary address
         self.fill_name_part2(new_contact_date)
         ##
@@ -186,6 +202,7 @@ class ContactHelper:
             self.app.open_home_page()
             self.contact_cache=[]
             #wd.implicitly_wait(55)
+            """ сохарнять отдельно айдишники в отдельный список и оттуда уже случайно выбирать значение, того который будем редактировать"""
             #for element in wd.find_elements_by_name("entry"):
             for element in wd.find_elements_by_xpath("//tr[@name='entry']"):
                 #wd.implicitly_wait(10)
