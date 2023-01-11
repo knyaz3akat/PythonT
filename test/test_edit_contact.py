@@ -8,7 +8,6 @@ def test_edit_contact_by_index(app):
         app.contact.create(Contact(firstname="Fname4Test"))
     old_contact = app.contact.get_contact_list()
     index = randrange(len(old_contact))
-    index1 = random.choice(old_contact.index())
     print("4ucJlo 1 = " + str(index))
     contact=Contact(firstname="Fname003", middlename="Mname003", lastname="Lname003", nickname="Nname003",
                                            title="qwerty001", company="asdfgh002", address="zxcvbnm003", homephone="111000222", mobile="111000333",
