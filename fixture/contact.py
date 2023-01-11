@@ -110,7 +110,8 @@ class ContactHelper:
         self.app.open_home_page()
         # Select 1th contact
         self.select_contact_by_index(index)
-        wd.find_element_by_xpath("//img[@title='Edit']").click()
+        # wd.find_element_by_xpath("//img[@title='Edit']").click()
+        wd.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
         ### fill contact form
         self.fill_name_part1(new_contact_date)
         """ field 'groups' is missing """
