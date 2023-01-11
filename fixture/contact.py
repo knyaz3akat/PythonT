@@ -72,7 +72,8 @@ class ContactHelper:
             wd.find_element_by_link_text("home page").click()
 
     def delete_first_contact(self):
-        wd = self.app.wd
+        self.delete_contact_by_index(0)
+        """wd = self.app.wd
         self.app.open_home_page()
         # Select 1th contact
         self.select_first_contact()
@@ -82,6 +83,23 @@ class ContactHelper:
         #wd.implicitly_wait(5)
         self.app.open_home_page()
         self.contact_cache = None
+        """
+
+    def delete_contact_by_index(self, index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        # Select 1th contact
+        self.select_contact_by_index(index)
+        # Submit delete
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to.alert.accept()
+        # wd.implicitly_wait(5)
+        self.app.open_home_page()
+        self.contact_cache = None
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def select_first_contact(self):
         wd = self.app.wd
