@@ -8,7 +8,7 @@ def test_edit_contact_by_index(app):
     old_contact = app.contact.get_contact_list()
     index = randrange(len(old_contact))
     #print("4ucJlo 1 = " + str(index))
-    contact=Contact(firstname="Fname003еее", middlename="Mname003кккк", lastname="Lname003ннннн", nickname="Nname003",
+    contact=Contact(firstname="Fname003еее", middlename="Mname003кккк", lastname="Lname003zero", nickname="Nname003",
                                            title="qwerty001", company="asdfgh002", address="zxcvbnm003", homephone="111000222", mobile="111000333",
                                            workphone="111000444", fax="111000555", email="asd01@asd.asd", email2="asd02@asd.ad", email3="asd03@asd.asd",
                                            homepage="www.ya1.ru", bday="8", bmonth="March", byear="1980", aday="10", amonth="July",
